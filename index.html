@@ -10,6 +10,16 @@
     <link media="all" href="./index_files/index.css" type="text/css" rel="stylesheet">
     <link rel="stylesheet" href="./index_files/form9ced0.css">
 
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-120461465-2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-120461465-2');
+</script>
+
     <meta name="facebook-domain-verification" content="ewauztsv7hf4ngq1pmo682oekp4ndo" />
 
         <link rel="apple-touch-icon" sizes="180x180" href="./index_files/sidebar-rudenko.jpg">
@@ -64,7 +74,7 @@
 
           xhr.onreadystatechange = function() {//Вызывает функцию при смене состояния.
               if(xhr.readyState == XMLHttpRequest.DONE && xhr.status == 200) {
-                f.action = 'ok.html';
+                f.action = '/ok.html';
                 f.submit();
               }
           }
