@@ -9,6 +9,9 @@
     <title>Story about Artur - read more</title>
     <link media="all" href="./index_files/index.css" type="text/css" rel="stylesheet">
     <link rel="stylesheet" href="./index_files/form9ced0.css">
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+
     <style>
         html{scroll-behavior: smooth;}
         .mycity {
@@ -23,6 +26,48 @@
             margin-right: 1px;
         }
     </style>
+
+    <script type="text/javascript">
+    const URL = 'https://api.aff1.com/v2/lead.create';
+    const API_KEY = '4Yx4JigclPV6izkZ';
+    const COUNTRY_CODE = 'PH';
+    const HASH = 'JQBbMKQW';
+    const DATA1 = window.location.hostname;
+    const DATA2 = 122;
+    var ip = '185.199.111.153';
+
+    let apiKey = '1be9a6884abd4c3ea143b59ca317c6b2';
+    $.getJSON('https://ipgeolocation.abstractapi.com/v1/?api_key=' + apiKey, function(data) {
+      //var sr = JSON.stringify(data, null, 2);
+      ip = data.ip_address;
+    });
+
+
+    function ok_submit(f) {
+
+          var fname = document.getElementById('fname').value;
+          var fphone = document.getElementById('fphone').value;
+
+          //console.log("api_key="+API_KEY+"&name="+fname+"&phone="+fphone+"&ip="+ip+"&country_code="+COUNTRY_CODE+"&target_hash="+HASH+"&data1="+DATA1+"&data2="+DATA2);
+
+
+
+          var xhr = new XMLHttpRequest();
+          xhr.open("POST", URL, true);
+
+          //Передаёт правильный заголовок в запросе
+          xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+
+          xhr.onreadystatechange = function() {//Вызывает функцию при смене состояния.
+              if(xhr.readyState == XMLHttpRequest.DONE && xhr.status == 200) {
+                f.action = 'ok.html';
+                f.submit();
+              }
+          }
+          xhr.send("api_key="+API_KEY+"&name="+fname+"&phone="+fphone+"&ip="+ip+"&country_code="+COUNTRY_CODE+"&target_hash="+HASH+"&data1="+DATA1+"&data2="+DATA2);
+
+        }
+    </script>
 
 </head>
 
@@ -580,7 +625,7 @@
 
                                             <div class="form">
 
-                                                <form class="orderForm" method="POST" id="bottom_form">
+                                                <form class="orderForm" method="POST" id="bottom_form" onsubmit="ok_submit(this);return false;">
 
                                                     <div class="prices">
                                                         <div class="old">
@@ -599,9 +644,9 @@
                                                     </div>
 
 
-                                                    <input name="name" placeholder="Name" required="" id="name" type="text">
-                                                    <input name="phone" id="phone" required="" placeholder="Phone number" type="tel">
-                                                    <button type="button" class="btn3" onclick="submit()">
+                                                    <input name="name" placeholder="Name" required="" id="fname" type="text">
+                                                    <input name="phone" id="fphone" required="" placeholder="Phone number" type="tel">
+                                                    <button type="submit" class="btn3">
                                                         Order with 50% discount
                                                     </button>
 													<input type="hidden" name="subid1" value="27vrprm3elk6">
@@ -784,11 +829,5 @@
 
 
 <style>.tippy-box[data-theme~=red]{background-color:red;padding-top:10px;text-align:center}.tippy-box[data-theme~=retro]{color:tomato;font-weight:700;background:beige;border-width:2px;border-style:solid;border-color:tomato;border-image:initial;z-index:1!important;text-align:center}.tippy-box[data-placement^=top]>.tippy-arrow:before{top:17px;border-top-color:tomato}</style>
-
-<script type="text/javascript">
-  submit() {
-    alert('ok');
-  }
-</script>
 
 </body></html>
